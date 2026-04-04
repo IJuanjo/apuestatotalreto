@@ -5,7 +5,8 @@ import { formatDataBetting } from "../utils/getBetting";
 const useListBet = () => useQuery({
     queryKey: ['ListBet'],
     queryFn: async () => {
-        const res = await fetch(`${process.env.BASE_URL}/api/bet`);
+        console.log('Fetching betting data...');
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bet`);
         const data = await res.json();
 
         if (!res.ok) {

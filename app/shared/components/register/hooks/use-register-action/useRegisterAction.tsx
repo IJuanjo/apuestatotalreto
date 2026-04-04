@@ -9,7 +9,7 @@ interface RegisterParams {
 export const useRegister = () => useMutation({
     mutationKey: ['Register'],
     mutationFn: async (params: RegisterParams) => {
-        const res = await fetch(`${process.env.BASE_URL}/api/user/register`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/register`, {
             method: "POST",
             body: JSON.stringify(params),
             headers: {
