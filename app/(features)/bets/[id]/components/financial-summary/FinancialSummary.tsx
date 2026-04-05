@@ -20,7 +20,7 @@ export default function FinancialSummary({ stake, odd, result }: FinancialSummar
         </div>
         <div className="flex justify-between border-b border-slate-100 pb-2 text-sm">
           <span>Cuota</span>
-          <span className="font-semibold">{odd.toFixed(2)}</span>
+          <span className="font-semibold">S/ {odd.toFixed(2)}</span>
         </div>
         <div className="flex justify-between pt-2 text-base font-bold">
           <span>Ganancia</span>

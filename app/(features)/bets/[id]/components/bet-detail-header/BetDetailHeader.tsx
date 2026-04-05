@@ -77,7 +77,7 @@ export default function BetDetailHeader({ date, homeTeam, awayTeam, selection, o
                 </div>
                 <div className="rounded-xs border border-slate-200 bg-white p-4">
                     <p className="text-xs uppercase tracking-wide text-slate-500">Cuota</p>
-                    <p className="text-lg font-semibold text-rose-600">{odd.toFixed(2)}</p>
+                    <p className="text-lg font-semibold text-rose-600">S/ {odd.toFixed(2)}</p>
                 </div>
                 <div className="rounded-xs border border-slate-200 bg-white p-4">
                     <p className="text-xs uppercase tracking-wide text-slate-500">Estado</p>

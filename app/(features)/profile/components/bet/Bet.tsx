@@ -45,7 +45,7 @@ const Bet = (props: BetProps) => {
         </div>
         <div>
           <div className="text-grey text-sm">Cuota</div>
-          <div className="font-bold text-red">{coute}</div>
+          <div className="font-bold text-red">S/ {coute}</div>
         </div>
         <div className={`${stateBadge({ status: state })} justify-self-start sm:justify-self-auto`}>
           {state}

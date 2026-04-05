@@ -6,7 +6,10 @@ const formatDate = (dateString: string): string => {
         year: '2-digit',
         hour: '2-digit',
         minute: '2-digit',
-    });
+        hour12: true,
+    })
+    .replace(/\s*a\.?\s*m\.?/i, ' AM')
+    .replace(/\s*p\.?\s*m\.?/i, ' PM');
 }
 
 export default formatDate;
