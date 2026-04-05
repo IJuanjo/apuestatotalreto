@@ -4,6 +4,7 @@ import Render from "@/app/shared/components/render/Render";
 import { cx } from "class-variance-authority";
 import useBettingCard from "./hook/useBettingCard";
 import { Bet, BetParamsActionSelect } from "../../interface/bet.interface";
+import { LABEL_FOR_TYPE } from "../../constant/bet.constant";
 
 
 interface BettingEventCardProps {
@@ -13,7 +14,7 @@ interface BettingEventCardProps {
 
 const BettingEventCard = ({ bet, handleActionSelect }: BettingEventCardProps) => {
     const { time = '', league = '', homeTeam = '', awayTeam, id, odds, isLive } = bet;
-    const { labelForType, typeSelected, handleBetClick } = useBettingCard({ id, homeTeam, awayTeam, date: time, handleActionSelect });
+    const { typeSelected, handleBetClick } = useBettingCard({ id, homeTeam, awayTeam, date: time, handleActionSelect });
 
     return (
         <div className="rounded-2xs border-neutral-200 border-solid border bg-white">
@@ -33,13 +34,13 @@ const BettingEventCard = ({ bet, handleActionSelect }: BettingEventCardProps) =>
                     {odds.map(({ type, value }) => {
                         const isSelected = typeSelected.has(`${type}-${id}`);
                         return (
-                            <button key={`${id}-${type}`} onClick={handleBetClick}  data-type={type} data-id={id} className={cx("flex cursor-pointer flex-col h-fit bg-neutral-100 rounded-sm px-xs py-2xs gap-1", {
+                            <button key={`${id}-${type}`} onClick={handleBetClick} data-type={type} data-id={id} className={cx("flex cursor-pointer flex-col h-fit bg-neutral-100 rounded-sm px-xs py-2xs gap-1", {
                                 "bg-primary-500 text-white": isSelected,
                             })}>
                                 <span className="text-sm leading-none font-bold">{value}</span>
                                 <span className={cx("text-xs leading-none text-neutral-400 font-bold", {
                                     "text-white": isSelected,
-                                })}>{labelForType[type]}</span>
+                                })}>{LABEL_FOR_TYPE[type as keyof typeof LABEL_FOR_TYPE]}</span>
                             </button>
                         );
                     })}

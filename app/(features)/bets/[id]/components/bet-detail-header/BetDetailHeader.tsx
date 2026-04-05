@@ -2,6 +2,7 @@
 
 import { cva } from "class-variance-authority";
 import { BetStatus } from "@/app/(features)/bets/interface/http.interface";
+import { LABEL_FOR_TYPE } from "../../../constant/bet.constant";
 
 interface BetDetailHeaderProps {
     date: string;
@@ -73,7 +74,7 @@ export default function BetDetailHeader({ date, homeTeam, awayTeam, selection, o
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
                 <div className="rounded-xs border border-slate-200 bg-white p-4">
                     <p className="text-xs uppercase tracking-wide text-slate-500">Selección</p>
-                    <p className="font-semibold text-slate-800 text-base">{selection}</p>
+                    <p className="font-semibold text-slate-800 text-base uppercase">{LABEL_FOR_TYPE[selection as keyof typeof LABEL_FOR_TYPE]}</p>
                 </div>
                 <div className="rounded-xs border border-slate-200 bg-white p-4">
                     <p className="text-xs uppercase tracking-wide text-slate-500">Cuota</p>

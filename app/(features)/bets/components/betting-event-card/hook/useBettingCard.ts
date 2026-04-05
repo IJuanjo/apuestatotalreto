@@ -1,14 +1,8 @@
 import { useState } from "react";
-import { LabelTypeOdds } from "@bets/constant/bet.constant";
 import { useSession } from "next-auth/react";
 import { useToast } from "@shared/components/toast/ToastContext";
 import { BetParamsActionSelect } from "@bets/interface/bet.interface";
 
-const LABEL_FOR_TYPE: Record<string, string> = {
-    [LabelTypeOdds.HOME]: "Local",
-    [LabelTypeOdds.DRAW]: "Empate",
-    [LabelTypeOdds.AWAY]: "Visitante"
-};
 
 interface UseBettingCardParams {
     readonly id: string;
@@ -55,7 +49,6 @@ const useBettingCard = ({ id, homeTeam, awayTeam, date, handleActionSelect }: Us
     }
 
     return {
-        labelForType: LABEL_FOR_TYPE,
         typeSelected,
         handleBetClick
     }

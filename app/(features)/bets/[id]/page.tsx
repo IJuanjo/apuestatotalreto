@@ -22,7 +22,7 @@ export default async function Page({ params }: PageProps) {
                 date={betDetail.date ?? ''}
                 homeTeam={betDetail.homeTeam ?? ''}
                 awayTeam={betDetail.awayTeam ?? ''}
-                selection={betDetail.pick ?? ''}
+                selection={String(betDetail?.pick ?? '')?.toLowerCase()}
                 odd={betDetail.odd ?? 0}
                 status={betDetail.status ?? ''}
             />
