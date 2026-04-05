@@ -10,7 +10,7 @@ const useHeader = (navegate: AppRouterInstance['push']) => {
         if (session) {
             navegate('/profile')
         } else {
-            setterActionComponentAuth?.("login");
+            setterActionComponentAuth?.(true);
         }
     }
 

@@ -3,32 +3,25 @@
 import { createContext, Dispatch, useState } from "react";
 import Render from "../../components/render/Render";
 import Modal from "../../components/modal/Modal";
-import Login from "../../components/login/Login";
-import Register from "../../components/register/Register";
+import AuthGoogle from "../../components/auth-google/AuthGoogle";
 import useRouteGuard from "./hooks/useRouteGuard";
 
-export type ContextAuth = Dispatch<React.SetStateAction<"login" | "register" | undefined>> | undefined;
+export type ContextAuth = Dispatch<React.SetStateAction<boolean>> | undefined;
 
 export const contextAuth = createContext<ContextAuth>(undefined);
 
 const AuthProvider = ({ children }: React.PropsWithChildren) => {
-    const [show, setShow] = useState<"login" | "register" | undefined>(undefined);
+    const [show, setShow] = useState(false);
     useRouteGuard();
-
-    
 
     return (
         <contextAuth.Provider value={setShow}>
             {children}
-            <Render isRender={Boolean(show)}>
+            <Render isRender={show}>
                 <Modal
-                    title={show === "login" ? "Iniciar Sesión" : "Crear Cuenta"}
-                    onClose={() => setShow(undefined)}
-                    Children={
-                        <Render isRender={show === "login"} fallback={<Register />}>
-                            <Login />
-                        </Render>
-                    }
+                    title="Iniciar Sesion"
+                    onClose={() => setShow(false)}
+                    Children={<AuthGoogle />}
                 />
             </Render>
         </contextAuth.Provider>
