@@ -3,6 +3,7 @@
 import Render from "@/app/shared/components/render/Render";
 import { cx } from "class-variance-authority";
 import useBettingCard from "./hook/useBettingCard";
+import { Bet, BetParamsActionSelect } from "../../interface/bet.interface";
 
 
 interface BettingEventCardProps {
@@ -29,10 +30,10 @@ const BettingEventCard = ({ bet, handleActionSelect }: BettingEventCardProps) =>
                     <span className="text-gray-900 text-sm bold leading-none font-bold">{awayTeam}</span>
                 </div>
                 <div className="flex gap-xs items-center">
-                    {odds.map(({ type, value }, index) => {
+                    {odds.map(({ type, value }) => {
                         const isSelected = typeSelected.has(`${type}-${id}`);
                         return (
-                            <button key={index} onClick={handleBetClick}  data-type={type} data-id={id} className={cx("flex cursor-pointer flex-col h-fit bg-neutral-100 rounded-sm px-xs py-2xs gap-1", {
+                            <button key={`${id}-${type}`} onClick={handleBetClick}  data-type={type} data-id={id} className={cx("flex cursor-pointer flex-col h-fit bg-neutral-100 rounded-sm px-xs py-2xs gap-1", {
                                 "bg-primary-500 text-white": isSelected,
                             })}>
                                 <span className="text-sm leading-none font-bold">{value}</span>

@@ -37,7 +37,7 @@ export interface MatchesTodayResponse {
   matches: Match[]
 }
 
-export interface BetResponse extends MatchesTodayResponse { }
+export type BetResponse = MatchesTodayResponse
 
 export enum BetStatus {
   PENDING = 'PENDING',

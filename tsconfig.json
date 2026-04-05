@@ -20,6 +20,9 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "@bets/*": ["./app/(features)/bets/*"],
+      "@profile/*": ["./app/(features)/profile/*"],
+      "@shared/*": ["./app/shared/*"],
       "@/components/*": ["./app/shared/components/*"],
       "@/icons/*": ["./app/shared/icons/*"]
     }

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Match } from "../../../interface/http.interface";
+import { Match } from "@bets/interface/http.interface";
 import { formatDataBetting } from "../utils/getBetting";
 
 const useListBet = () => useQuery({

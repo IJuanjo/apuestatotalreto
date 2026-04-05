@@ -2,6 +2,7 @@ import { useQuery } from "@/app/shared/hooks/useQuery"
 import { getBetMe } from "../utils/betsme"
 import { useMemo } from "react"
 import { BetMe, BetMeResponse, BetStatus } from "../../bets/interface/http.interface"
+import { BetParamsActionSelect } from "../../bets/interface/bet.interface"
 
 const useProfileInformation = () => {
 

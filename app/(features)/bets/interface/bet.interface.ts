@@ -1,4 +1,4 @@
-interface Bet {
+export interface Bet {
     id: string;
     homeTeam: string;
     awayTeam: string;
@@ -11,7 +11,7 @@ interface Bet {
     isLive?: boolean;
 }
 
-interface BetParamsActionSelect {
+export interface BetParamsActionSelect {
     type: string;
     id: string;
     homeTeam: string;

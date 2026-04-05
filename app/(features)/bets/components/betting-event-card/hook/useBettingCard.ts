@@ -1,7 +1,14 @@
-import { useEffect, useRef, useState } from "react";
-import { LabelTypeOdds } from "../../../constant/bet.constant";
+import { useState } from "react";
+import { LabelTypeOdds } from "@bets/constant/bet.constant";
 import { useSession } from "next-auth/react";
-import { useToast } from "@/app/shared/components/toast/ToastContext";
+import { useToast } from "@shared/components/toast/ToastContext";
+import { BetParamsActionSelect } from "@bets/interface/bet.interface";
+
+const LABEL_FOR_TYPE: Record<string, string> = {
+    [LabelTypeOdds.HOME]: "Local",
+    [LabelTypeOdds.DRAW]: "Empate",
+    [LabelTypeOdds.AWAY]: "Visitante"
+};
 
 interface UseBettingCardParams {
     readonly id: string;
@@ -12,22 +19,14 @@ interface UseBettingCardParams {
 }
 
 const useBettingCard = ({ id, homeTeam, awayTeam, date, handleActionSelect }: UseBettingCardParams) => {
-    const [typeSelected, setTypeSelected] = useState<Set<string>>(new Set());
-    const { data } = useSession();
-    const { addToast } = useToast();
-
-    useEffect(() => {
+    const [typeSelected, setTypeSelected] = useState<Set<string>>(() => {
+        if (typeof window === "undefined") return new Set();
         const betSelected = JSON.parse(sessionStorage.getItem("betSelected") ?? "[]") as Array<BetParamsActionSelect>;
         const selectedForId = betSelected.filter(bet => bet.id === id);
-
-        setTypeSelected(new Set(selectedForId.map(bet => `${bet.type}-${bet.id}`)));
-    }, [id]);
-
-    const labelForType = useRef<Record<string, string>>({
-        [LabelTypeOdds.HOME]: "Local",
-        [LabelTypeOdds.DRAW]: "Empate",
-        [LabelTypeOdds.AWAY]: "Visitante"
-    }).current;
+        return new Set(selectedForId.map(bet => `${bet.type}-${bet.id}`));
+    });
+    const { data } = useSession();
+    const { addToast } = useToast();
 
     const handleBetClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         const { type, id } = event.currentTarget.dataset;
@@ -56,7 +55,7 @@ const useBettingCard = ({ id, homeTeam, awayTeam, date, handleActionSelect }: Us
     }
 
     return {
-        labelForType,
+        labelForType: LABEL_FOR_TYPE,
         typeSelected,
         handleBetClick
     }

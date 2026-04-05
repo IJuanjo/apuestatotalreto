@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface UseQueryOptions {
   enabled?: boolean;
@@ -25,7 +25,7 @@ export function useQuery<T>(
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     if (!enabled) return;
 
     setLoading(true);
@@ -40,12 +40,12 @@ export function useQuery<T>(
     } finally {
       setLoading(false);
     }
-  };
+  }, [enabled, fetcher]);
 
   useEffect(() => {
     if (!enabled) return;
     void fetchData();
-  }, [enabled]);
+  }, [enabled, fetchData]);
 
   return {
     data,

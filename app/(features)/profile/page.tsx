@@ -7,7 +7,7 @@ import History from './components/history/History'
 import useProfileInformation from './hooks/useProfileInformation';
 
 
-const page = () => {
+const Page = () => {
   const { informationBoxes } = useProfileInformation();
   const { history, statusCount = {}, countTotal = 0 } = informationBoxes;
 
@@ -27,4 +27,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

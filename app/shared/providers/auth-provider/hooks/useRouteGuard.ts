@@ -34,7 +34,7 @@ const useRouteGuard = () => {
             addToast("Debes iniciar sesión para continuar", "warning");
             router.replace("/bets");
         }
-    }, [pathname, session, status, router]);
+    }, [pathname, session, status, router, addToast]);
 };
 
 export default useRouteGuard;

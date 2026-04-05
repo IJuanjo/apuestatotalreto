@@ -6,7 +6,7 @@ interface AmountProps {
 
 const Amount = ({ amount, text, color }: AmountProps) => {
   return (
-    <div className="border-input bg-white p-4 flex-1 rounded-2xs">
+    <div className={`border-input bg-white p-4 flex-1 rounded-2xs ${color}`}>
       <div className="font-bold mb-1 text-3xl">{amount}</div>
       <div className="text-grey">{text}</div>
     </div>

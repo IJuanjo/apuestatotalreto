@@ -1,4 +1,5 @@
-import { useToast } from "@/app/shared/components/toast/ToastContext";
+import { useToast } from "@shared/components/toast/ToastContext";
+import { BetParamsActionSelect } from "@bets/interface/bet.interface";
 
 const useBetActionSelect = () => {
     const { addToast } = useToast();

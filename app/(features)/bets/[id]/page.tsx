@@ -1,7 +1,7 @@
 
-import { BetMe } from "../interface/http.interface";
+import { BetMe } from "@bets/interface/http.interface";
 import BetDetailHeader from "./components/bet-detail-header/BetDetailHeader";
-import BreadcrumbBack from "../../../shared/components/breadcrumb-back/BreadcrumbBack";
+import BreadcrumbBack from "@shared/components/breadcrumb-back/BreadcrumbBack";
 import FinancialSummary from "./components/financial-summary/FinancialSummary";
 import { getBetSingle } from "./utils/betSingle";
 

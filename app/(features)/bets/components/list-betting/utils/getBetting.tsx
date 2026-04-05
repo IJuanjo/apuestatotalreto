@@ -1,5 +1,6 @@
-import { LabelTypeOdds } from "../../../constant/bet.constant"
-import { Match } from "../../../interface/http.interface"
+import { LabelTypeOdds } from "@bets/constant/bet.constant"
+import { Bet } from "@bets/interface/bet.interface"
+import { Match } from "@bets/interface/http.interface"
 import formatDate from "./date"
 
 
